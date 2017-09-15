@@ -1,0 +1,7 @@
+extends layout/page
+block vars
+  - title = error.message || 'Error'
+
+block header
+  p Извините, произошла ошибка
+  p= error.message

@@ -1,0 +1,19 @@
+extends layout/page
+
+block vars
+  - title = 'Привет ≥︺‿︺≤!'
+block headScripts
+  script(src="/socket.io/socket.io.js")
+
+block content
+  p.lead Здесь будет чат.
+  p= `Добро пожаловать, ${user.get('username')}`
+
+  #room
+    ul
+    form
+      input.form-control(autocomplete="off" autofocus placeholder="Сообщение...")
+
+block javascript
+  script(src="/js/chat.js")
+
