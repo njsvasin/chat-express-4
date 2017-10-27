@@ -1,29 +1,29 @@
 doctype html
 html
-  head
-    block vars
-      - var title = title || 'Chat'
+	head
+		block vars
+			- var title = title || 'Chat'
 
-    title= title
+		title= title
 
-    link(rel="stylesheet" href="/vendor/bower_components/bootstrap/dist/css/bootstrap.css")
-    link(rel="stylesheet" href="/css/app.css")
+		link(rel="stylesheet" href="/vendor/bower_components/bootstrap/dist/css/bootstrap.css")
+		link(rel="stylesheet" href="/css/app.css")
 
-    script(src="/vendor/bower_components/jquery/dist/jquery.js")
-    script(src="/vendor/bower_components/bootstrap/dist/js/bootstrap.js")
+		script(src="/vendor/bower_components/jquery/dist/jquery.js")
+		script(src="/vendor/bower_components/bootstrap/dist/js/bootstrap.js")
 
-    block headScripts
-  body
-    section.container
-      block navigation
-        include ../partials/topNavigation
+		block headScripts
+	body
+		section.container
+			block navigation
+				include ../partials/topNavigation
 
-      block header
+			block header
 
-      h1= title
+			h1= title
 
-      block content
+			block content
 
-      block footer
+			block footer
 
-    block javascript
+		block javascript

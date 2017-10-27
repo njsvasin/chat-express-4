@@ -1,14 +1,14 @@
 nav.navbar.navbar-default(role="navigation")
-  ul.nav.navbar-nav
-    li
-      a(href="/") Главная
-    if user
-      li
-        a(href="/chat") Чат
-  ul.nav.navbar-nav.navbar-right
-    if user
-      li
-        a(href="" onclick="$(document.body).append($('<form method=POST action=/logout>'));$('form').submit();return false") Выйти
-    else
-      li
-        a(href="/login") Войти
+	ul.nav.navbar-nav
+		li
+			a(href="/") Home
+		if user
+			li
+				a(href="/chat") Chat
+	ul.nav.navbar-nav.navbar-right.mr-0
+		if user
+			li
+				a(href="" onclick="$(document.body).append($('<form method=POST action=/logout>'));$('form').submit();return false") Log out
+		else
+			li
+				a(href="/login") Log in

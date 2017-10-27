@@ -1,52 +1,50 @@
 extends layout/page
 
 block vars
-  - title = 'Регистрация и вход'
+	- title = 'Registration and Login'
 
 block content
-  p Введите имя пользователя и пароль. Если такого пользователя нет - он будет создан.
+	p Enter your user name and password. If there is no such user, it will be created.
 
-  form.form-horizontal.login-form(action="/auth/login" method="POST" name="login-form")
-    .form-group
-      .col-lg-4
-        label.control-label(for="input-username") Имя
-        input.form-control(name="username" value="name" type="text" id="input-username" placeholder="Имя")
+	form.form-horizontal.login-form(action="/auth/login" method="POST" name="login-form")
+		.form-group
+			.col-lg-4
+				input.form-control(name="username" value="name" type="text" id="input-username" placeholder="Name")
 
-    .form-group
-      .col-lg-4
-        label.control-label(for="input-password") Пароль
-        input.form-control(name="password" value="pass" type="password" id="input-password" placeholder="Пароль")
+		.form-group
+			.col-lg-4
+				input.form-control(name="password" value="pass" type="password" id="input-password" placeholder="Password")
 
-    .form-group
-      .col-lg-4
-        button.btn.btn-primary(type="submit" data-loading-text="Отправляю...") Войти
-        span.help-block.error
+		.form-group
+			.col-lg-4
+				button.btn.btn-primary(type="submit" data-loading-text="Sending...") Log in
+				span.help-block.error
 
 block footer
-  script.
-    $(document.forms['login-form']).on('submit', function() {
-      var form = $(this);
+	script.
+		$(document.forms['login-form']).on('submit', function () {
+			var form = $(this);
 
-      $('.error', form).html('');
-      $(":submit", form).button("loading");
+			$('.error', form).html('');
+			$(":submit", form).button("loading");
 
-      $.ajax({
-        url: "/login",
-        data: form.serialize(),
-        method: "POST",
-        complete: function() {
-          $(":submit", form).button("reset");
-        },
-        statusCode: {
-          200: function() {
-            form.html("Вы вошли в сайт").addClass('alert-success');
-            window.location.href = "/chat";
-          },
-          403: function(jqXHR) {
-            var error = JSON.parse(jqXHR.responseText);
-            $('.error', form).html(error.message);
-          }
-        }
-      });
-      return false;
-    });
+			$.ajax({
+				url: "/login",
+				data: form.serialize(),
+				method: "POST",
+				complete: function () {
+					$(":submit", form).button("reset");
+				},
+				statusCode: {
+					200: function () {
+						form.html("You are now logged in").addClass('alert-success');
+						window.location.href = "/chat";
+					},
+					403: function (jqXHR) {
+						var error = JSON.parse(jqXHR.responseText);
+						$('.error', form).html(error.message);
+					}
+				}
+			});
+			return false;
+		});

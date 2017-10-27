@@ -1,19 +1,18 @@
 extends layout/page
 
 block vars
-  - title = 'Привет ≥︺‿︺≤!'
+	- title = 'Express 4 Chat'
 block headScripts
-  script(src="/socket.io/socket.io.js")
+	script(src="/socket.io/socket.io.js")
 
 block content
-  p.lead Здесь будет чат.
-  p= `Добро пожаловать, ${user.get('username')}`
+	p= `Wellcome, ${user.get('username')}`
 
-  #room
-    ul
-    form
-      input.form-control(autocomplete="off" autofocus placeholder="Сообщение...")
+	#room
+		ul
+		form
+			input.form-control(autocomplete="off" autofocus placeholder="Input your message here ...")
 
 block javascript
-  script(src="/js/chat.js")
+	script(src="/js/chat.js")
 
